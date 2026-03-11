@@ -6,6 +6,9 @@ import { EventModule } from './modules/events/events.module';
 import { DatabaseModule } from './infrastructure/database/database.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), RedisConfig, RegistrationModule, EventModule, DatabaseModule],
+  imports: [ConfigModule.forRoot({
+    isGlobal: true,
+    ignoreEnvFile: process.env.NODE_ENV === 'production',
+  }), RedisConfig, RegistrationModule, EventModule, DatabaseModule],
 })
 export class AppModule {}

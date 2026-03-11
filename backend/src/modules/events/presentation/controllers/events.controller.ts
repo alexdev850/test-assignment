@@ -26,6 +26,7 @@ export class EventsController {
         @Body() body: RegisterToEventDto,
     ) {
         await this.eventService.registerToEvent(id, body);
+        
         return {
             success: true,
             message: 'Registration successful',
